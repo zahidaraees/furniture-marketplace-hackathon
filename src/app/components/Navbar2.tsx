@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Montserrat, Poppins } from "next/font/google";
-import { UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
+
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -64,8 +64,9 @@ const Navbar = () => {
         <ul
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } md:flex md:space-x-6 text-gray-700 ${poppins.className} 
-          absolute md:static bg-zinc-300 md:bg-transparent top-[41px] right-0 w-half md:w-auto z-50`}
+          } md:flex md:space-x-6 text-gray-700 ${
+            poppins.className
+          } absolute md:static bg-zinc-300 md:bg-transparent top-[41px] right-0 w-half md:w-auto z-50`}
         >
           <li className="list-none">
             <Link
@@ -100,79 +101,54 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="list-none">
-            <Link href="#" className="flex items-center space-x-2">
-              <Image
-                src="/icons/akar-icons_heart.png"
-                alt="Love"
-                width={20}
-                height={20}
-                priority
-              />
+          <Link href="#" className="flex items-center space-x-2">
+          <Image
+            src="/icons/akar-icons_heart.png"
+            alt="Love"
+            width={20}
+            height={20}
+            priority
+          />
+            </Link>
+          </li>
+          
+          <li className="list-none">
+          <Link href="#" className="flex items-center space-x-2">
+          <Image
+            src="/icons/mdi_account-alert-outline.png"
+            alt="alert"
+            width={20}
+            height={20}
+            priority
+          />
             </Link>
           </li>
           <li className="list-none">
-            <Link href="#" className="flex items-center space-x-2">
-              <Image
-                src="/icons/mdi_account-alert-outline.png"
-                alt="alert"
-                width={20}
-                height={20}
-                priority
-              />
+          <Link href="#" className="flex items-center space-x-2">
+          <Image
+            src="/icons/akar-icons_search.png"
+            alt="Search"
+            width={20}
+            height={20}
+            priority
+          />
             </Link>
           </li>
           <li className="list-none">
-            <Link href="#" className="flex items-center space-x-2">
-              <Image
-                src="/icons/akar-icons_search.png"
-                alt="Search"
-                width={20}
-                height={20}
-                priority
-              />
+          <Link href="/cart" className="flex items-center space-x-2">
+          <Image
+            src="/icons/shopping-cart.png"
+            alt="Shopping Cart"
+            width={20}
+            height={20}
+            priority
+          />
             </Link>
           </li>
-          <li className="list-none">
-            <Link href="/cart" className="flex items-center space-x-2">
-              <Image
-                src="/icons/shopping-cart.png"
-                alt="Shopping Cart"
-                width={20}
-                height={20}
-                priority
-              />
-            </Link>
-          </li>
+          
 
-          {/* Clerk Authentication Buttons */}
-          <SignedOut>
-            <li className="list-none">
-              <Link
-                href="/sign-in"
-                className="block px-4 py-2 text-[16px] font-medium bg-blue-600 text-white rounded hover:bg-blue-700"
-              >
-                Sign In
-              </Link>
-            </li>
-            <li className="list-none">
-              <Link
-                href="/sign-up"
-                className="block px-4 py-2 text-[16px] font-medium bg-green-600 text-white rounded hover:bg-green-700"
-              >
-                Sign Up
-              </Link>
-            </li>
-          </SignedOut>
-
-          <SignedIn>
-            <li className="list-none flex items-center space-x-2">
-              {/* User Profile Button */}
-              <UserButton afterSignOutUrl="/" />
-            </li>
-          </SignedIn>
         </ul>
       </div>
-
       {/* The dropdown menu will overlay on top of the hero section */}
       <div
         className={`${
